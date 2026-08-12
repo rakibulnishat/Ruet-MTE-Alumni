@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTE Alumni Network — RUET</title>
+<meta name="description" content="Alumni network for the Department of Mechatronics Engineering, Rajshahi University of Engineering & Technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <nav>
+    <a href="#home" class="brand" onclick="go('home');return false;">
+      <span class="chip">MTE</span> RUET Alumni Network
+    </a>
+    <button class="navburger" onclick="document.getElementById('navlinks').classList.toggle('open')" aria-label="Toggle menu">☰</button>
+    <div class="navlinks" id="navlinks">
+      <button data-page="home" onclick="go('home')">Home</button>
+      <button data-page="about" onclick="go('about')">About</button>
+      <button data-page="directory" onclick="go('directory')">Directory</button>
+      <button data-page="events" onclick="go('events')">Events</button>
+      <button data-page="gallery" onclick="go('gallery')">Gallery</button>
+      <button data-page="register" onclick="go('register')">Join</button>
+      <button data-page="profile" onclick="go('profile')">My Profile</button>
+      <button data-page="admin" onclick="go('admin')">Admin</button>
+    </div>
+  </nav>
+</header>
+
+<!-- HOME -->
+<div class="page" id="page-home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Dept. of Mechatronics Engineering · RUET</div>
+        <h1>Every graduate<br>is still a <span>node</span><br>on the network.</h1>
+        <p class="lead">A home for MTE, RUET alumni — find batchmates, share what you're building, hear about reunions, and keep the department's network of engineers connected across the world.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="go('register')">Join the directory</button>
+          <button class="btn" onclick="go('directory')">Browse alumni</button>
+        </div>
+        <div class="stat-row">
+          <div class="stat"><b id="stat-alumni">0</b><span>Registered alumni</span></div>
+          <div class="stat"><b id="stat-batches">0</b><span>Batches represented</span></div>
+          <div class="stat"><b id="stat-countries">0</b><span>Countries</span></div>
+        </div>
+      </div>
+      <div class="hero-viz" aria-hidden="true">
+        <svg viewBox="0 0 400 400" width="100%" height="100%">
+          <g stroke="rgba(220,238,245,0.18)" stroke-width="1.4" fill="none">
+            <line x1="60" y1="90" x2="180" y2="60"/>
+            <line x1="180" y1="60" x2="320" y2="110"/>
+            <line x1="60" y1="90" x2="120" y2="220"/>
+            <line x1="180" y1="60" x2="200" y2="200"/>
+            <line x1="320" y1="110" x2="300" y2="240"/>
+            <line x1="120" y1="220" x2="200" y2="200"/>
+            <line x1="200" y1="200" x2="300" y2="240"/>
+            <line x1="120" y1="220" x2="90" y2="330"/>
+            <line x1="200" y1="200" x2="210" y2="340"/>
+            <line x1="300" y1="240" x2="310" y2="330"/>
+            <line x1="90" y1="330" x2="210" y2="340"/>
+            <line x1="210" y1="340" x2="310" y2="330"/>
+          </g>
+          <g stroke="var(--copper)" stroke-width="1.6" fill="none" class="trace-anim">
+            <path d="M60,90 L180,60 L320,110 L300,240 L210,340"/>
+          </g>
+          <g fill="var(--surface-2)" stroke="rgba(220,238,245,0.3)">
+            <circle cx="60" cy="90" r="7"/><circle cx="180" cy="60" r="7"/><circle cx="320" cy="110" r="7"/>
+            <circle cx="120" cy="220" r="7"/><circle cx="200" cy="200" r="7"/><circle cx="300" cy="240" r="7"/>
+            <circle cx="90" cy="330" r="7"/><circle cx="210" cy="340" r="7"/><circle cx="310" cy="330" r="7"/>
+          </g>
+          <g fill="var(--amber)">
+            <circle cx="180" cy="60" r="4.5"/><circle cx="300" cy="240" r="4.5"/><circle cx="210" cy="340" r="4.5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Recently joined</h2>
+        <button class="btn btn-sm" onclick="go('directory')">View full directory →</button>
+      </div>
+      <div class="grid grid-3" id="home-recent"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Upcoming events</h2>
+        <button class="btn btn-sm" onclick="go('events')">All events →</button>
+      </div>
+      <div id="home-events"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT -->
+<div class="page" id="page-about">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">About the department</div>
+      <h2 style="font-size:2rem;max-width:26ch;">Department of Mechatronics Engineering, RUET</h2>
+      <div class="about-blueprint">
+        <p>RUET was the first public university in Bangladesh to introduce Mechatronics Engineering, launching the department in 2013 within the Faculty of Mechanical Engineering. The program blends mechanical, electronic, and computer engineering to train engineers for robotics, automation, and intelligent-systems work.</p>
+        <p>This alumni site is run by and for graduates of the department — a place to stay in touch, find your batchmates, and support current students the way alumni before you may have supported you.</p>
+        <div class="fact-grid">
+          <div class="fact"><b>2013</b><span>Year the department was established</span></div>
+          <div class="fact"><b>MTE</b><span>Faculty of Mechanical Engineering, RUET</span></div>
+          <div class="fact"><b>Rajshahi</b><span>Kajla, Rajshahi–Dhaka Highway</span></div>
+        </div>
+        <p style="margin-top:24px;">Official department website: <a href="https://www.mte.ruet.ac.bd/" target="_blank" rel="noopener">mte.ruet.ac.bd</a><span class="placeholder-note">verify current details on the official site</span></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- DIRECTORY -->
+<div class="page" id="page-directory">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Alumni directory</div>
+      <div class="section-head">
+        <h2>Find a batchmate</h2>
+      </div>
+      <div class="filters">
+        <input type="text" id="dir-search" placeholder="Search by name, company, or location…" oninput="renderDirectory()">
+        <select id="dir-batch" onchange="renderDirectory()"><option value="">All batches</option></select>
+        <select id="dir-sector" onchange="renderDirectory()"><option value="">All sectors</option></select>
+      </div>
+      <div class="grid grid-3" id="dir-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- EVENTS -->
+<div class="page" id="page-events">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Events</div>
+      <div class="section-head"><h2>Reunions, talks & workshops</h2></div>
+      <div id="events-list"></div>
+    </div>
+  </section>
+</div>
+
+<!-- GALLERY -->
+<div class="page" id="page-gallery">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Gallery</div>
+      <div class="section-head"><h2>Memory wall</h2></div>
+      <div class="gallery-grid" id="gallery-grid" style="margin-bottom:36px;"></div>
+      <h3 style="font-size:1.1rem;">Add a photo</h3>
+      <p style="margin-bottom:16px;font-size:.88rem;">Paste a public image URL. Please only share photos you have the right to post — this wall is visible to everyone.</p>
+      <form class="panel" onsubmit="submitGallery(event)">
+        <div class="field"><label for="g-name">Your name</label><input id="g-name" required></div>
+        <div class="field"><label for="g-url">Image URL</label><input id="g-url" type="url" required placeholder="https://…"></div>
+        <div class="field"><label for="g-caption">Caption</label><input id="g-caption" required placeholder="Batch 2017 reunion, Feb 2026"></div>
+        <button class="btn btn-primary" type="submit">Add to gallery</button>
+        <div class="msg" id="g-msg"></div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- REGISTER -->
+<div class="page" id="page-register">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Join the network</div>
+      <div class="section-head"><h2>Register as an alumnus/alumna</h2></div>
+      <p style="max-width:60ch;margin-bottom:24px;">Submissions are reviewed by a department volunteer before appearing in the public directory — usually within a few days. Set a 4-digit PIN so you can edit or remove your own listing later from <strong>My Profile</strong>.</p>
+      <form class="panel" onsubmit="submitRegistration(event)">
+        <div class="field-row">
+          <div class="field"><label for="r-name">Full name</label><input id="r-name" required></div>
+          <div class="field"><label for="r-batch">Batch / admission year</label><select id="r-batch" required></select></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="r-email">Email</label><input id="r-email" type="email" required></div>
+          <div class="field"><label for="r-pin">4-digit profile PIN</label><input id="r-pin" required pattern="\d{4}" maxlength="4" placeholder="e.g. 4821"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="r-position">Current position</label><input id="r-position" placeholder="e.g. Automation Engineer"></div>
+          <div class="field"><label for="r-company">Company / organization</label><input id="r-company"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="r-city">City</label><input id="r-city"></div>
+          <div class="field"><label for="r-country">Country</label><input id="r-country"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="r-sector">Sector</label><select id="r-sector"></select></div>
+          <div class="field"><label for="r-linkedin">LinkedIn (optional)</label><input id="r-linkedin" type="url" placeholder="https://linkedin.com/in/…"></div>
+        </div>
+        <div class="field"><label for="r-photo">Photo URL (optional)</label><input id="r-photo" type="url" placeholder="https://…"></div>
+        <div class="field"><label for="r-bio">Short bio (optional, 200 chars)</label><textarea id="r-bio" rows="3" maxlength="200"></textarea></div>
+        <button class="btn btn-primary" type="submit">Submit for verification</button>
+        <div class="msg" id="r-msg"></div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- PROFILE -->
+<div class="page" id="page-profile">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">My profile</div>
+      <div class="section-head"><h2>Manage your listing</h2></div>
+      <p style="max-width:60ch;margin-bottom:24px;">Enter the email and PIN you registered with. This is a lightweight check, not secure authentication — don't reuse a sensitive password as your PIN.</p>
+      <form class="panel" id="login-form" onsubmit="doProfileLogin(event)">
+        <div class="field-row">
+          <div class="field"><label for="p-email">Email</label><input id="p-email" type="email" required></div>
+          <div class="field"><label for="p-pin">PIN</label><input id="p-pin" required pattern="\d{4}" maxlength="4"></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Access my profile</button>
+        <div class="msg" id="p-msg"></div>
+      </form>
+      <div id="profile-editor" style="display:none;margin-top:28px;"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ADMIN -->
+<div class="page" id="page-admin">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Admin</div>
+      <div class="section-head"><h2>Moderation</h2></div>
+      <div class="admin-box" id="admin-gate">
+        <p>This area is for department volunteers who approve new registrations. Enter the admin passcode.</p>
+        <form class="panel" style="max-width:340px;margin:0 auto;" onsubmit="doAdminLogin(event)">
+          <div class="field"><label for="a-pass">Admin passcode</label><input id="a-pass" type="password" required></div>
+          <button class="btn btn-primary" type="submit">Unlock</button>
+          <div class="msg" id="a-msg"></div>
+        </form>
+      </div>
+      <div id="admin-panel" style="display:none;">
+        <h3>Pending alumni (<span id="pending-count">0</span>)</h3>
+        <div id="pending-list" style="margin-bottom:40px;"></div>
+        <h3>Add an event</h3>
+        <form class="panel" style="margin-bottom:40px;" onsubmit="adminAddEvent(event)">
+          <div class="field-row">
+            <div class="field"><label for="e-title">Title</label><input id="e-title" required></div>
+            <div class="field"><label for="e-date">Date</label><input id="e-date" type="date" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="e-type">Type</label>
+              <select id="e-type">
+                <option>Reunion</option><option>Webinar</option><option>Workshop</option><option>Job Fair</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field"><label for="e-location">Location</label><input id="e-location" placeholder="e.g. RUET Campus / Online"></div>
+          </div>
+          <div class="field"><label for="e-desc">Description</label><textarea id="e-desc" rows="2"></textarea></div>
+          <button class="btn btn-primary" type="submit">Add event</button>
+        </form>
+        <h3>Manage gallery</h3>
+        <div id="admin-gallery"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:8px;"><span class="chip">MTE</span> RUET Alumni Network</div>
+      <p>Department of Mechatronics Engineering<br>Rajshahi University of Engineering &amp; Technology<br>Kajla, Rajshahi–Dhaka Highway, Rajshahi, Bangladesh</p>
+    </div>
+    <div>
+      <p style="margin-bottom:10px;">Contact <span class="placeholder-note">add your real dept./alumni-cell email</span></p>
+      <div class="foot-links">
+        <a href="https://www.mte.ruet.ac.bd/" target="_blank" rel="noopener">Department site</a>
+        <a href="https://ruet.ac.bd" target="_blank" rel="noopener">RUET</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/storage.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
