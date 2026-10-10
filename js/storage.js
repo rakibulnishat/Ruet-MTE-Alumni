@@ -1,11 +1,11 @@
 /*
-  storage.js — data persistence adapter
-  --------------------------------------
+  storage.js: data persistence adapter
+  ---------------------------------------
   CURRENT IMPLEMENTATION: browser localStorage.
   This makes the site fully functional the moment you open it, with zero
   setup. The trade-off: localStorage is per-browser, per-device. Data
   entered by one visitor (a registration, an admin approval, a new event)
-  is NOT visible to other visitors on GitHub Pages — there is no shared
+  is NOT visible to other visitors on GitHub Pages, there is no shared
   server behind a static site.
 
   This is fine for local testing, or for a single person (e.g. one admin)
